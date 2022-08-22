@@ -1,0 +1,5 @@
+<mapper namespace="order">
+        <insert id="insertOrder">
+            INSERT INTO orders (goodsId,orderId,createDate,orderAmount) VALUE (#{goodsId},#{orderId},#{createDate},#{orderAmount})
+        </insert>
+</mapper>

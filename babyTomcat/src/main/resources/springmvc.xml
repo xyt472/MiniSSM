@@ -1,0 +1,44 @@
+<beans xmlns:context="http://www.springframework.org/schema/context">
+    <!-- 配置处理器映射器 -->
+
+    <!--    <bean class="com.lyt.AtianSpringMvc.mapping.BeanNameUrlHandlerMapping"></bean>-->
+    <!--    <bean class="com.lyt.AtianSpringMvc.mapping.SimpleUrlHandlerMapping"></bean>-->
+    <!--    <bean class="com.lyt.AtianSpringMvc.mapping.RequestMappingHandlerMapping"></bean>-->
+
+    <!--     配置处理器适配器 -->
+    <!--    <bean class="com.lyt.AtianSpringMvc.adapter.HttpRequestHandlerAdapter"></bean>-->
+    <!--&lt;!&ndash;    <bean class="com.lyt.AtianSpringMvc.adapter.SimpleControllertHandlerAdapter"></bean>&ndash;&gt;-->
+    <!--    <bean class="com.lyt.AtianSpringMvc.adapter.RequestMappingHandlerAdapter"></bean>-->
+    <!-- 配置处理器 -->
+    <!--    <bean name="/queryUser" class="com.lyt.AtianSpringMvc.handler.QueryUserHandler"></bean>-->
+
+    <!--    <bean class="com.lyt.AtianSpringMvc.controller.UserController"></bean>-->
+    <!--    <bean class="com.lyt.AtianSpring.factory.PropertyPlaceholderConfigurer">-->
+    <!--        <property name="location" value="classpath:/token.properties"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="userService3" class="com.lyt.AtianSpring.factory.test.UserService">-->
+    <!--        <property name="uId" value="10001"/>-->
+    <!--        <property name="company" value="腾讯"/>-->
+    <!--        <property name="location" value="深圳"/>-->
+    <!--        <property name="userDao" ref="userDao"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="userDao" class="com.lyt.AtianSpring.factory.test.UserDao"/>-->
+    <!--    <bean id="userService3" class="com.lyt.AtianSpring.factory.test.test2.UserService3">-->
+
+    <!--    </bean>-->
+    <bean id="DefaultAdvisorAutoProxyCreator" class="com.lyt.AtianSpring.Aop.DefaultAdvisorAutoProxyCreator"/>
+    <!--    <bean id="userService3" class="com.lyt.AtianSpring.factory.test.test2.UserService3"/>-->
+    <!--    <bean id="beforeAdvice" class="com.lyt.AtianSpring.factory.test.test2.UserServiceBeforeAdvice"/>-->
+
+    <!--    <bean id="methodInterceptor" class="com.lyt.AtianSpring.Aop.framework.MethodBeforeAdviceInterceptor">-->
+    <!--        <property name="advice" ref="beforeAdvice"/>-->
+    <!--    </bean>-->
+
+    <!--    <bean id="pointcutAdvisor" class="com.lyt.AtianSpring.Aop.aspectj.AspectJExpressionPointcutAdvisor">-->
+    <!--        <property name="expression" value="execution(* com.lyt.AtianSpring.factory.test.test2.IUserService.*(..))"/>-->
+    <!--        <property name="advice" ref="methodInterceptor"/>-->
+    <!--    </bean>-->
+
+
+    <context:component-scan base-package="com.lyt"/>
+</beans>

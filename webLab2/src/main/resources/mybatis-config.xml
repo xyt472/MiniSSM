@@ -1,0 +1,28 @@
+<configuration>
+    <settings>
+        <setting name="execuType" value="simple">
+        </setting>
+    </settings>
+
+    <environments default="dev">
+        <environment id="dev">
+            <dataSource type="DBCP">
+                <property name="db.driver" value="com.mysql.cj.jdbc.Driver"></property>
+                <property name="db.url"
+                          value="jdbc:mysql://127.0.0.1:3306/book?characterEncoding=UTF-8"></property>
+                <property name="db.username" value="root"></property>
+                <property name="db.password" value="root"></property>
+                <!-- <property name="username" value="${username}"/> -->
+            </dataSource>
+        </environment>
+    </environments>
+<!--    这是映射文件-->
+    <mappers>
+        <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper/ProductMapper.xml"/>
+
+<!--        <mapper resource="mapper/QuestionMapper.xml"/>-->
+<!--        <mapper resource="mapper/TextContentMapper.xml"></mapper>-->
+<!--        <mapper resource="mapper/Paper.xml"/>-->
+    </mappers>
+</configuration>

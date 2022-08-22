@@ -1,0 +1,93 @@
+<mapper namespace="test3">
+    <resultMap  id="GoodsList"
+                type="com.lyt.dao.pojo.AddGoodsList">
+        <id column="id"  property="goodsId"></id>
+        <result column="uid"  property="uid"></result>
+        <collection  property="products" ofType="com.lyt.dao.pojo.Product">
+            <result column="id"  property="id"></result>
+            <result column="productName"  property="productName"></result>
+            <result column="info"  property="info"></result>
+            <result column="productDate"  property="productDate"></result>
+            <result column="state"  property="state"></result>
+            <result column="left"  property="left"></result>
+        </collection>
+    </resultMap >
+
+    <select  id="getGoodsList" resultMap="GoodsList">
+        select *from product ,addgoodslist where product.id=addgoodslist.goodsId
+        and addgoodslist.uid=#{id} limit  ${pageNum}, ${pageSize}
+    </select>
+
+    <select id="IsExistence"
+            resultType="java.lang.Integer"
+            >
+        SELECT count(*) FROM addGoodsList WHERE uid = #{uid} and goodsId = #{goodsId}
+    </select>
+
+    <update  id="updateGoodsNums">
+        UPDATE addGoodsList SET num= num+#{num} WHERE uid = #{uid} and goodsId = #{goodsId}
+    </update>
+
+    <insert id="addGoodsList">
+        INSERT INTO addGoodsList (goodsId,uid) VALUE (#{goodsId},#{uid})
+    </insert>
+
+    <select id="getProductById"
+            resultType="com.lyt.dao.pojo.Product"
+            statementType="prepared">
+        select *from product where id='${id}'
+    </select>
+<!--    <select id="getAllProductById"-->
+<!--            resultType="com.lyt.dao.pojo.Product2"-->
+<!--            statementType="prepared">-->
+<!--        select *from product-->
+<!--    </select>-->
+<!--    <update id="updateState">-->
+<!--        UPDATE product SET state = #{state} WHERE id = #{id}-->
+<!--    </update>-->
+    <select id="getAllProduct"
+            resultType="com.lyt.dao.pojo.Product"
+            statementType="prepared">
+        select *from product
+    </select>
+<!--    <update id="editProduct">-->
+<!--        UPDATE product SET productName = #{productName} , price = #{price} ,-->
+<!--        info = #{info} ,productDate=#{productDate},state=#{state} WHERE id = #{id}-->
+<!--    </update>-->
+    <insert id="addProduct">
+        INSERT INTO product
+        (id,productName,price,info,productDate,state)
+        VALUE
+        (#{id},#{productName},#{price},#{info},#{productDate},#{state})
+    </insert>
+    <delete id="deleteProduct">
+        DELETE FROM product WHERE id = #{id}
+    </delete>
+    <select id="getProductCounts" resultType="java.lang.Integer"
+            statementType="prepared">
+        SELECT count(*) FROM product
+    </select>
+    <select id="getAllProducts" resultType="com.lyt.dao.pojo.Product"
+            statementType="prepared">
+        SELECT * FROM product LIMIT #{pageNum}, #{pageSize}
+    </select>
+
+
+
+    <select id="queryUserByParams"
+            resultType="com.lyt.BabyBatisFramework.pojo.User"
+            statementType="prepared">
+        select * from user where sex=#{sex} and username like '%${username}'
+        <!--        <if test ="username!= null and username !=''">-->
+        <!--            and username like '%${username}'-->
+        <!--            <if test ="username != null and username !=''">-->
+        <!--                    and 1=1-->
+        <!--            </if>-->
+        <!--        </if>-->
+    </select>
+    <select id="queryUserByParams3"
+            resultType="com.lyt.BabyBatisFramework.pojo.User"
+            statementType="prepared">
+        select *from user where sex =#{sex}
+    </select>
+</mapper>
